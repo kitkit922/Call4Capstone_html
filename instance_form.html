@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create new EC2 Instance</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="/static/js/main.js"></script> -->
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-2"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Argus Watcher</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Project
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="instance_list.html">
+                    Django Easy Deploy
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.canva.com/">About Us </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="text-center">
+        <h3 class="h3 pt-4">Django Easy Deployment</h3>
+        <p class="lead">
+          This is a demo of deploying a Django web application from Github
+          repository on an AWS EC2 Instance. <br />
+          Django developers only concern on their development and then deploy
+          their project with one click.
+        </p>
+      </header>
+      <hr class="my-2" />
+
+      <div class="container p-4">
+        <form class="row g-4" method="post" action="instance_detail.html" novalidate>
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="RdJSzG18nzg00RJAjTvhCDlCbkcMepsvxT5mY2tIF5K9bc5bVd8yc4e1CXyjJlXJ"
+          />
+          <h4 class="mb-3">Server and Django Project Configuration</h4>
+
+          <!-- name -->
+          <div class="col-md-5 col-sm-12">
+            <label class="form-label" for="id_name"> Server Name </label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              maxlength="50"
+              required
+              id="id_name"
+            />
+            <small class="form-text"
+              >Hint: The name of server to deploy django project.
+            </small>
+            <small class="text-danger"> </small>
+          </div>
+
+          <!-- project_name -->
+          <div class="col-md-6 col-sm-12">
+            <label class="form-label" for="id_project_name">
+              Django Projct Name
+            </label>
+            <input
+              type="text"
+              name="project_name"
+              class="form-control"
+              maxlength="256"
+              required
+              id="id_project_name"
+            />
+            <small class="form-text"
+              >Hint: The name of django project. (Or the name of the directory
+              where manage.py file locates.)
+            </small>
+            <small class="text-danger"> </small>
+          </div>
+
+          <!-- github_url -->
+          <div class="col-md-8 col-sm-12">
+            <label class="form-label" for="id_github_url"> Github Url </label>
+            <input
+              type="text"
+              name="github_url"
+              class="form-control"
+              maxlength="200"
+              required
+              id="id_github_url"
+            />
+            <small class="form-text"
+              >Hint: The Url of Github repository.
+            </small>
+            <small class="text-danger"> </small>
+          </div>
+
+          <!-- description -->
+          <div class="col-md-12 col-sm-12">
+            <label class="form-label col-12" for="id_github_url">
+              Project Description
+            </label>
+            <textarea
+              name="description"
+              cols="40"
+              rows="10"
+              class="form-control"
+              required
+              id="id_description"
+            ></textarea>
+            <small class="form-text"
+              >Hint: The description of this project.
+            </small>
+            <small class="text-danger"> </small>
+          </div>
+
+          <hr class="my-4" />
+
+          <h4 class="mb-3">MySQL Configuration (Comming soon)</h4>
+
+          <hr class="my-4" />
+
+          <div class="d-flex py-2">
+            <a
+              class="btn btn-outline-secondary rounded-pill me-auto"
+              href="instance_list.html"
+            >
+              Back
+            </a>
+            <button
+              class="btn btn-outline-secondary rounded-pill mx-2"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="btn btn-outline-primary rounded-pill mx-2"
+              type="submit"
+            >
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

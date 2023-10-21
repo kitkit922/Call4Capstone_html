@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC2 Instance Detail Info</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="/static/js/main.js"></script> -->
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-2"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Argus Watcher</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Project
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="instance_list.html">
+                    Django Easy Deploy
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.canva.com/">About Us </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="text-center">
+        <h3 class="h3 pt-4">EC2 Instance Detail</h3>
+      </header>
+      <hr class="my-2" />
+      <div class="fliud-container font-monospace">
+        <div class="row g-5 py-4">
+          <div class="col-md-4 col-sm-12">
+            <div class="card h-100">
+              <h4 class="card-header">
+                Server Name:
+                <span id="name" class="fw-bold">Server01</span>
+              </h4>
+              <div class="card-body">
+                <h5 class="card-title mb-3">
+                  Project:
+                  <span id="project_name" class="fw-bold"> demoDjango </span>
+                  <a
+                    href="https://github.com/simonangel-fong/Repo4DjangoEasyDeploy.git"
+                    class="card-link fs-6"
+                    target="_blank"
+                  >
+                    Github
+                  </a>
+                </h5>
+                <p class="card-text">
+                  Server ID:
+                  <span id="instance_id" class="fw-bold">
+                    i-0a403aca38fae0a7e
+                  </span>
+                </p>
+
+                <p class="card-text">
+                  Create Date:
+                  <span id="created_date" class="fw-bold">
+                    2023-10-21 20:32:42
+                  </span>
+                </p>
+                <p class="card-text">
+                  Pulic IP:
+                  <span id="public_ip" class="fw-bold">
+                    <!-- public ip -->
+                  </span>
+                </p>
+                <p class="card-text">
+                  Status:
+                  <span id="status" class="fw-bold">
+                    <!-- status -->
+                  </span>
+                </p>
+                <p class="card-text">
+                  Description:
+                  <span id="status" class="fw-bold"> fsdfsd </span>
+                </p>
+                <p>
+                  <button
+                    id="btn_update_state"
+                    type="button"
+                    class="btn btn-sm btn-outline-primary rounded-pill align-middle my-2"
+                  >
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Refresh Instance State
+                  </button>
+                  <button
+                    id="btn_update_code"
+                    type="button"
+                    class="btn btn-sm btn-outline-success rounded-pill align-middle my-2"
+                    disabled
+                  >
+                    <i class="bi bi-cloud-upload"></i>
+                    Update Github Code
+                  </button>
+                </p>
+                <!-- <a
+              id="btn_stop"
+              href="#"
+              class="btn btn-sm btn-outline-warning rounded-pill me-2"
+              stop_ec2_by_name
+            >
+              Stop Instance
+            </a> -->
+                <hr class="py-2" />
+                <div class="d-flex">
+                  <a
+                    href="instance_list.html"
+                    class="btn btn-sm btn-outline-secondary rounded-pill me-auto"
+                  >
+                    Back
+                  </a>
+
+                  <a
+                    href="instance_confirm_delete.html"
+                    class="btn btn-sm btn-outline-danger rounded-pill"
+                  >
+                    Terminate Instance
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <img
+              src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*wGZaCDK7BVhaKbeW.jpeg"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/static/js/ec2_main.js"></script>
+    <script>
+      const INFO_URL = "/ec2/info";
+      const UPDATE_CODE_URL = "/ec2/code";
+      const INSTANCE_NAME = "Server01";
+
+      // load instance info when document is ready.
+      $(function () {
+        request_ec2_by_name(INSTANCE_NAME, INFO_URL).then((data) =>
+          display(data)
+        );
+      });
+
+      // load instance info when refresh button is clicked.
+      $("#btn_update_state").click(() => {
+        request_ec2_by_name(INSTANCE_NAME, INFO_URL).then((data) =>
+          display(data)
+        );
+      });
+
+      // // update codes from github after deployed.
+      // $("#btn_update_code").click(() => {
+      //   request_ec2_by_name(INSTANCE_NAME, UPDATE_CODE_URL).then((data) =>
+      //     console.log(data)
+      //   );
+      // });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
